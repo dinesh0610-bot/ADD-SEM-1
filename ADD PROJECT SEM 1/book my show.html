@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMyShow</title>
+    <style>
+        /* Basic styling for login and home pages */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+
+        .navbar {
+            text-align: center;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            font-size: 18px;
+        }
+        .s-bar {
+                margin: 20px auto;
+                text-align: center;
+            }
+            .s-bar input {
+                width: 50%;
+                padding: 10px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            .s-bar button {
+                padding: 10px 15px;
+                font-size: 16px;
+                color: #fff;
+                background: crimson;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .login-container h1 {
+            text-align: center;
+        }
+
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-container label {
+            margin-bottom: 5px;
+        }
+
+        .login-container input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .movie-list {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .movie {
+            text-align: center;
+            width: 30%;
+        }
+
+        .movie img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .movie button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .movie button:hover {
+            background-color: #218838;
+        }
+
+        /* Home page specific */
+        .home-page {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Login Page -->
+    <div class="login-container">
+        <h1>BookMyShow - Login</h1>
+        <form id="loginForm">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="register.html">Sign up</a></p>
+    </div>
+
+    <!-- Home Page -->
+    <div class="home-page">
+        <header>
+            <div class="navbar">
+                <h1>BookMyShow</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Movies</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#" onclick="logout()">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="s-bar">
+                <input type="text" placeholder="Search for recent movies...">
+                <button>Search</button>
+            </div>
+        </header>
+
+        <main>
+            <h2>Featured Movies</h2>
+            <div class="movie-list">
+                <div class="movie">
+                    <img src="goat.jpeg" alt="Movie 1">
+                    <h3>The Goat</h3>
+                    <button>Book Now</button>
+                </div>
+                <div class="movie">
+                    <img src="goat 2.jpeg" alt="Movie 2">
+                    <h3>Leo</h3>
+                    <button>Book Now</button>
+                </div>
+                <div class="movie">
+                    <img src="varisu.jpg" alt="Movie 3">
+                    <h3>Varisu</h3>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simple login functionality for demonstration
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // Prevent form submission
+
+            // Check login credentials (basic example)
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // In a real scenario, you would check these against a database
+            if (username === "user" && password === "password") {
+                document.querySelector(".login-container").style.display = "none"; // Hide login form
+                document.querySelector(".home-page").style.display = "block"; // Show home page
+            } else {
+                alert("Invalid username or password.");
+            }
+        });
+
+        // Logout functionality
+        function logout() {
+            document.querySelector(".home-page").style.display = "none"; // Hide home page
+            document.querySelector(".login-container").style.display = "block"; // Show login page
+        }
+    </script>
+
+</body>
+</html>
+
+
+
